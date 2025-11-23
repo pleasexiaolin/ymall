@@ -16,6 +16,11 @@
     <modules>
         <module>ym-common</module>
         <module>ym-service</module>
+        <module>item-service</module>
+        <module>cart-service</module>
+        <module>user-service</module>
+        <module>trade-service</module>
+        <module>pay-service</module>
     </modules>
 
     <properties>
