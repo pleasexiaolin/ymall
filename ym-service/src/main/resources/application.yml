@@ -1,0 +1,72 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: ym-service
+#  默认当前环境 不搞测试、预发、线上和本地环境了
+#  profiles:
+#    active: dev
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+  datasource:
+    url: ENC(9V0NyfqGqWoHA1xdzCQBi1aTCwitPu5vvQEvYMZiAtoc+Ck6uln4xTF0bUGznUBFdnXtHnJsvo/VEaXNON2+X6dEjL4vwtVwD5JD5ZF33omittZoMNTD1LePsA+tnUCyJJqjpflZ0w4aclwHjkMENQr94SPnw/QsqaXJEvKoduLrSlFcCbZuSNmdA4D2tCmb1oCOfjykt9dovyqHzG/6Hw==)
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ENC(0iKHpsFa3BSpI1ltmHxfoCsbzb73piPbx8GsGuBul14kjlMyC4ugi3L9DRED9xZZ)
+    password: ENC(+AK7u1UcDTQE92hXPOjlqut4MHZn2rmDTaVnHrVGvOpXfkw+rVwcJNHrl9pgclXA)
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+    default-enum-type-handler: com.baomidou.mybatisplus.core.handlers.MybatisEnumTypeHandler
+  global-config:
+    db-config:
+      update-strategy: not_null
+      id-type: auto
+
+logging:
+  level:
+    com.xiaolin: debug
+  pattern:
+    dateformat: HH:mm:ss:SSS
+  file:
+    path: "logs/${spring.application.name}"
+
+knife4j:
+  enable: true
+  openapi:
+    title: 小茹商城接口文档
+    description: "小茹商城接口文档"
+    email: pleasexiaolin@163.com
+    concat: 小林
+    url: https://github.com/pleasexiaolin
+    version: v1.0.0
+    group:
+      default:
+        group-name: default
+        api-rule: package
+        api-rule-resources:
+          - com.xiaolin.controller
+          -
+ym:
+  jwt:
+    location: classpath:hmall.jks
+    alias: hmall
+    password: hmall123
+    tokenTTL: 30m
+  auth:
+    excludePaths:
+      - /search/**
+      - /users/login
+      - /items/**
+      - /hi
+
+jasypt:
+  encryptor:
+    password: ${JASYPT_ENCRYPTOR_PASSWORD}
+    property:
+      prefix: ENC(
+      suffix: )

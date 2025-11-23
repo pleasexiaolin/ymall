@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.xiaolin.config.MyBatisConfig,\
+  com.xiaolin.config.JsonConfig
